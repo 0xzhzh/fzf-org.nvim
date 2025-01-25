@@ -1,0 +1,41 @@
+* Development
+
+  There are a few things left to do here.
+
+** DONE add README                                                       :admin:
+
+** TODO set up versioning                                                :admin:
+
+- [[https://github.com/googleapis/release-please-action][release-please-action]]
+
+** TODO generate vim help docs                                           :admin:
+
+- [[https://github.com/kdheepak/panvimdoc][panvimdoc]]
+- [[https://github.com/numToStr/lemmy-help][lemmy-help]]
+
+** TODO use fzf native reloading                                       :quality:
+
+I can't seem to get fzf native reloading to work, without flickering.
+It seems to only support that for string actions.
+
+** TODO use fzf-lua's own defaults system                              :quality:
+
+I re-implemented parts of fzf-lua's configuration infrastructure, but perhaps
+this plugin's configs can go into the same fzf-lua setup block alongside
+the rest of its builtin providers.
+
+** TODO toggle TODO state                                              :feature:
+
+orgmode.nvim doesn't seem to expose an API for this yet (but I haven't looked very hard).
+
+** TODO live org search                                                :feature:
+
+Like live grep, but using orgmode search syntax.
+
+Not sure if this is possible. fzf-lua seems to work best with external processes.
+
+** TODO step in/out                                                    :feature:
+
+~ctrl-i~ and ~ctrl-o~ to step in and out of search context, for refining search context.
+
+I'm not sure how to communicate with the ~contents~ callback from an ~action~ function.
