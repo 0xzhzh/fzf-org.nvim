@@ -179,4 +179,4 @@ fzo.orgmode({
 })
 ```
 
-If you would like to contribute, please see <DEVELOPMENT.org>.
+If you would like to contribute, please see [DEVELOPMENT.org](DEVELOPMENT.org).
