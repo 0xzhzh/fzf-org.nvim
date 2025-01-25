@@ -85,11 +85,14 @@ Default options (do not copy and paste these directly):
     color_icons  = true,                    -- whether to colorize entries
     bullet_icons = { "◉", "○", "✸", "✿" },  -- how to display bullets
     todo_icons   = {                        -- how to display TODO
-      TODO = "➔",
-      DONE = "✓",
-      PROGRESS = "…",
-      INPROGRESS = "…",
-      default = " ",
+      default = "   ",
+      TODO = "[ ]",
+      NEXT = "[➔]",
+      WAITING = "[…]",
+      PROGRESS = "[~]",
+      INPROGRESS = "[~]",
+      DONE = "[✓]",
+      ABANDONED = "[⨯]",
     },
     show_tags    = true,                    -- whether to display tags
 

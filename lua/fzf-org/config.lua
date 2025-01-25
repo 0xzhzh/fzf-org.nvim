@@ -43,11 +43,14 @@ M.bullet_icons = { "◉", "○", "✸", "✿" }
 
 ---@type fzo.TodoIcons
 M.todo_icons = {
-  TODO = "➔",
-  DONE = "✓",
-  PROGRESS = "…",
-  INPROGRESS = "…",
-  default = " ",
+  default = "   ",
+  TODO = "[ ]",
+  NEXT = "[➔]",
+  WAITING = "[…]",
+  PROGRESS = "[~]",
+  INPROGRESS = "[~]",
+  DONE = "[✓]",
+  ABANDONED = "[⨯]",
 }
 
 M.refile_actions = {
