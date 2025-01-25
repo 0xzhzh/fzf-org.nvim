@@ -101,8 +101,4 @@ function M.orgmode(opts)
   fzf.fzf_exec(org_contents, opts)
 end
 
-function M.refile()
-  M.orgmode(config.defaults.refile_to_file)
-end
-
 return M

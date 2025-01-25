@@ -1,12 +1,10 @@
+---@diagnostic disable: unused-local
 local M = {}
 
 local fzf = require("fzf-org.fzf")
 local org = require("fzf-org.org")
 local utils = require("fzf-org.utils")
 local links = require("fzf-org.links")
-
---- This will be set to providers.orgmode by init.lua to avoid circularity
-M._restart = nil
 
 ---@param selected string[]
 ---@param opts fzo.Opts
@@ -28,8 +26,8 @@ end
 fzf.register_action(M.refile_headline, "org-refile-headline", { header = "refile header", pos = 1 })
 
 ---@param selected string[]
----@param _opts fzo.Opts
-function M.yank_link(selected, _opts)
+---@param opts fzo.Opts
+function M.yank_link(selected, opts)
   local _, obj = links.resolve_item(selected[1] --[[@as fzo.Link]])
   if obj then
     local link = obj:get_link()

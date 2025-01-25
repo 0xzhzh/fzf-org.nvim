@@ -28,12 +28,16 @@ local actions = require("fzf-org.actions")
 ---@alias fzo.BulletIcons
 ---| string[] # custom icons (e.g., { "*", "**", "***" })
 ---| false    # don't show bullets
-M.bullet_icons = { "◉", "○", "✸", "✿" }
 
 ---@alias fzo.TodoIcons
 ---| { TODO: string, DONE: string, default: string|nil }  # value/type to symbol mapping
 ---| "value"  # just show the TODO value
 ---| false    # don't show TODO symbols
+
+---@type fzo.BulletIcons
+M.bullet_icons = { "◉", "○", "✸", "✿" }
+
+---@type fzo.TodoIcons
 M.todo_icons = {
   TODO = "➔",
   DONE = "✓",
@@ -42,10 +46,11 @@ M.todo_icons = {
   default = " ",
 }
 
-M.defaults = {}
 M.refile_actions = {
   ["default"] = actions.refile_headline,
 }
+
+M.defaults = {}
 
 ---@type fzo.Opts
 M.defaults.orgmode = {
@@ -69,8 +74,7 @@ M.defaults.orgmode = {
 }
 
 ---@type fzo.Opts
-M.defaults.all_headlines = {
-}
+M.defaults.all_headlines = {}
 
 ---@type fzo.Opts
 M.defaults.files = {
