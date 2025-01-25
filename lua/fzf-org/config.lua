@@ -69,6 +69,10 @@ M.defaults.orgmode = {
 }
 
 ---@type fzo.Opts
+M.defaults.all_headlines = {
+}
+
+---@type fzo.Opts
 M.defaults.files = {
   where  = "*",
   what   = "file",

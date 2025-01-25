@@ -5,6 +5,7 @@ local setup_opts
 do
   local fzf_functions = {
     "orgmode",
+    "all_headlines",
     "files",
     "headlines",
     "subheadlines",

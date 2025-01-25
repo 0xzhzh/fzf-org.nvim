@@ -51,7 +51,7 @@ Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 This plugin provides the following functions (where `fzo` is `require("fzf-org")`):
 
 ```lua
-fzo.orgmode()             -- Browse all org headlines
+fzo.all_headlines()       -- Browse all org headlines
 fzo.files()               -- Browse all org files
 fzo.headlines()           -- Browse org headlines in current file
 fzo.subheadlines()        -- Browse org headlines under current headline/file
@@ -59,6 +59,10 @@ fzo.refile()              -- Refile to headline
 fzo.refile_to_file()      -- Refile to org file
 fzo.refile_to_headline()  -- Refile to headline in current file
 ```
+
+> [!NOTE]
+> All of these functions are implemented by passing different options to `fzo.orgmode()`,
+> whose default behavior (called without any options) is the same as `fzo.all_headlines()`.
 
 ## Configuration
 
@@ -99,6 +103,14 @@ Default options (do not copy and paste these directly):
   },
 
   -- Function-specific options; these inherit from orgmode options (above)
+
+  -- fzo.all_headlines()
+  all_headlines = {
+    -- Same default behavior as fzo.orgmode().
+    --
+    -- You can add options here to configure the behavior of fzo.all_headlines()
+    -- without affecting other functions' inherited options.
+  },
 
   -- fzo.files()
   files = {
