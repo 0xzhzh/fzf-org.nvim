@@ -39,3 +39,9 @@ Not sure if this is possible. fzf-lua seems to work best with external processes
 ~ctrl-i~ and ~ctrl-o~ to step in and out of search context, for refining search context.
 
 I'm not sure how to communicate with the ~contents~ callback from an ~action~ function.
+
+
+** TODO add commands                                                   :feature:
+
+Not sure how this will play with the whole ~:FzfLua~ subsystem though.
+I'm hesitant to just introduce a new command when users can define that themselves.
