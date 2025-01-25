@@ -1,6 +1,6 @@
 <div align="center">
 
-# (fzf :heart: lua) :handshake: (:unicorn: :recycle:)
+# (fzf :heart: lua) :handshake: (:unicorn: :dancers:)
 
 **Use [fzf-lua][fzf-lua] to browse [orgmode.nvim][orgmode.nvim]**
 
