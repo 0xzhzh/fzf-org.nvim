@@ -72,10 +72,10 @@ Default options (do not copy and paste these directly):
 
 ```lua
 {
-  -- Default options for fzo.orgmode(); all other functions also inherit from this:
+  -- Default options for fzo.orgmode() (all other options inherit from this)
   orgmode = {
     whence       = false,       -- where we should have started from; false means don't care
-    where        = "*",         -- where to search
+    where        = "*",         -- where to search (options: "*" (all org files), "%" (current file), "." (current headline))
     what         = "headline",  -- what to search for
 
     color_icons  = true,                    -- whether to colorize entries
@@ -98,14 +98,16 @@ Default options (do not copy and paste these directly):
     },
   },
 
-  -- Function-specific functions
+  -- Function-specific options; these inherit from orgmode options (above)
 
+  -- fzo.files()
   files = {
     where  = "*",
     what   = "file",
     prompt = "Org files ❯ ",
   },
 
+  -- fzo.headlines()
   headlines = {
     whence = "file",
     where  = "%",
@@ -113,6 +115,7 @@ Default options (do not copy and paste these directly):
     prompt = "Org headlines ❯ ",
   },
 
+  -- fzo.subheadlines()
   subheadlines = {
     whence = "file",
     where  = ".",
@@ -120,6 +123,7 @@ Default options (do not copy and paste these directly):
     prompt = "Org headlines ❯ ",
   },
 
+  -- fzo.refile()
   refile = {
     whence  = "headline",
     where   = "*",
@@ -130,6 +134,7 @@ Default options (do not copy and paste these directly):
     },
   }
 
+  -- fzo.refile_to_file()
   refile_to_file = {
     whence  = "headline",
     where   = "*",
@@ -140,6 +145,7 @@ Default options (do not copy and paste these directly):
     },
   },
 
+  -- fzo.refile_to_headline()
   refile_to_headline = {
     whence  = "headline",
     where   = "*",
