@@ -2,12 +2,12 @@
 
 # (fzf :heart: lua) :handshake: (:unicorn: :dancers:)
 
-**Use [fzf-lua][fzf-lua] to browse [orgmode.nvim][orgmode.nvim]**
+**Use [fzf-lua][fzf-lua] to browse [nvim-orgmode][nvim-orgmode]**
 
 </div>
 
 [fzf-lua]: https://github.com/ibhagwan/fzf-lua
-[orgmode.nvim]: https://github.com/nvim-orgmode/orgmode
+[nvim-orgmode]: https://github.com/nvim-orgmode/orgmode
 
 > [!IMPORTANT]
 > This plugin is currently alpha-quality software and may have some rough edges.
@@ -18,7 +18,7 @@
 ### Requirements
 
 - [fzf-lua][fzf-lua]
-- [orgmode.nvim][orgmode.nvim]
+- [nvim-orgmode][nvim-orgmode]
 
 Those plugins each have their own requirements; see their respective READMEs for details.
 
