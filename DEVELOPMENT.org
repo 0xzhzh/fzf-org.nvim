@@ -13,6 +13,11 @@
 - [[https://github.com/kdheepak/panvimdoc][panvimdoc]]
 - [[https://github.com/numToStr/lemmy-help][lemmy-help]]
 
+** TODO make GitHub issues from these notes...                           :admin:
+
+As much as this is a good document to test out my own plugin, it is also good to
+keep track of things in GitHub issues.
+
 ** TODO use fzf native reloading                                       :quality:
 
 I can't seem to get fzf native reloading to work, without flickering.
