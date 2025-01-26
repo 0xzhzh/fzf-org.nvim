@@ -23,6 +23,13 @@ It seems to only support that for string actions.
 I re-implemented parts of fzf-lua's configuration infrastructure, but perhaps
 this plugin's configs can go into the same fzf-lua setup block alongside
 the rest of its builtin providers.
+** TODO introduce separate or customizable highlight groups            :quality:
+
+I prefer not to introduce more highlight groups because that just pollutes
+the highlight group namespace + it forces users to use have to put executable
+code like ~vim.cmd[[highlight ...]]~ in their config. It's just easier to
+have a field in the ~setup_opts~ that maps each entry component to the name of
+the highlight the user prefers.
 
 ** TODO toggle TODO state                                              :feature:
 
