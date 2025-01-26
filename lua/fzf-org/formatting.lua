@@ -4,10 +4,39 @@ local fzf = require("fzf-org.fzf")
 local utils = require("fzf-org.utils")
 local links = require("fzf-org.links")
 
+---@alias fzo.TextKind
+---| '"category"'
+---| '"filename"'
+---| '"bullet"'
+---| '"TODO"'
+---| '"DONE"'
+---| '"title"'
+---| '"tags"'
+
+---@type table<fzo.TextKind, string|boolean>
+local highlight_groups = {
+  category = "Identifier",
+  filename = false,
+  bullet = "Operator",
+  TODO = "DiagnosticError",
+  DONE = "DiagnosticInfo",
+  title = false,
+  tags = "Label",
+}
+
+---@param txt string
+---@param kind fzo.TextKind
+---@param opts fzo.Opts
+---@return string highlighted
+local function highlight(txt, kind, opts)
+  if not opts.color_icons or not highlight_groups[kind] then return txt end
+  return fzf.utils.ansi_from_hl(highlight_groups[kind], txt)
+end
+
 ---@param category string
----@param _ fzo.Opts
-function M.format_category(category, _)
-  local s = string.format("<<%s>>", category)
+---@param opts fzo.Opts
+function M.format_category(category, opts)
+  local s = highlight(string.format("<<%s>>", category), "category", opts)
   local width = 16
   return s .. string.rep(" ", math.floor(width) - utils.strlen(s))
 end
@@ -21,11 +50,7 @@ function M.file_to_entry(file, opts)
 
   category = M.format_category(file.category, opts)
 
-  filename = file.filename
-
-  if opts.color_icons then
-    category = fzf.utils.ansi_from_hl("Identifier", category)
-  end
+  filename = highlight(file.filename, "filename", opts)
 
   return string.format("%s %s %s", link, category, filename)
 end
@@ -41,11 +66,14 @@ function M.headline_to_entry(headline, opts)
 
   if type(opts.bullet_icons) == "table" then
     bullet = opts.bullet_icons[math.min(#opts.bullet_icons, headline.level)]
+    bullet = " " .. highlight(bullet, "bullet", opts)
   end
-  if #bullet > 0 then bullet = " " .. bullet end
 
   if opts.todo_icons == "value" then
     todo = headline.todo_value or string.rep(" ", 6)
+    if headline.todo_type == "TODO" or headline.todo_type == "DONE" then
+      todo = " " .. highlight(todo, headline.todo_type --[[@as "TODO"|"DONE"]], opts)
+    end
   elseif type(opts.todo_icons) == "table" then
     todo = (function()
       local icons = opts.todo_icons --[[@as table]]
@@ -65,23 +93,19 @@ function M.headline_to_entry(headline, opts)
       for _, v in pairs(icons) do widest = math.max(widest, utils.strlen(v)) end
       return string.rep(" ", widest)
     end)()
-  end
-  if #todo > 0 then todo = " " .. todo end
-
-  title = " " .. headline.title
-
-  if opts.show_tags and headline.tags and #headline.tags > 0 then
-    tags = " :"
-    for _, tag in ipairs(headline.tags) do
-      tags = tags .. tag .. ":"
+    if headline.todo_type == "TODO" or headline.todo_type == "DONE" then
+      todo = " " .. highlight(todo, headline.todo_type --[[@as "TODO"|"DONE"]], opts)
     end
   end
 
-  if opts.color_icons ~= false then
-    category = fzf.utils.ansi_from_hl("Identifier", category)
-    bullet = fzf.utils.ansi_from_hl("Operator", bullet)
-    todo = fzf.utils.ansi_from_hl("ErrorMsg", todo)
-    tags = fzf.utils.ansi_from_hl("Label", tags)
+  title = " " .. highlight(headline.title, "title", opts)
+
+  if opts.show_tags and headline.tags and #headline.tags > 0 then
+    tags = ":"
+    for _, tag in ipairs(headline.tags) do
+      tags = tags .. tag .. ":"
+    end
+    tags = " " .. highlight(tags, "tags", opts)
   end
 
   return string.format("%s %s%s%s%s%s",
