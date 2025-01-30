@@ -6,21 +6,6 @@ local org = require("fzf-org.org")
 local utils = require("fzf-org.utils")
 local links = require("fzf-org.links")
 
----@param p string
----@return string dir
-local function dirname(p)
-  if not p then return "" end
-  return vim.uv.fs_realpath(vim.fs.dirname(p)) or ""
-end
-
---- HACK: check if we are refiling a capture, which will be in a temporary file
---- See: https://github.com/nvim-orgmode/orgmode/issues/872
----@param headline fzo.Headline
----@return boolean
-local function is_capture(headline)
-  return dirname(headline.file.filename) == dirname(vim.fn.tempname())
-end
-
 ---@param selected string[]
 ---@param opts fzo.Opts
 function M.refile_headline(selected, opts)
@@ -39,12 +24,10 @@ function M.refile_headline(selected, opts)
   ---@type string
   local src_description = src_kind
 
-  if is_capture(src) then
-    local parent = src.parent
-    while parent do
-      src = parent
-      parent = src.parent
-    end
+  if opts._from_capture then
+    -- Mirror the behavior of nvim-orgmode's capture.refile_to_destination
+    -- (see discussion: https://github.com/nvim-orgmode/orgmode/issues/872)
+    src = src.file.headlines[1]
     src_description = "capture"
   end
 

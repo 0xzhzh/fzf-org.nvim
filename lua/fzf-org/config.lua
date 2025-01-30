@@ -5,10 +5,9 @@ local links = require("fzf-org.links")
 local actions = require("fzf-org.actions")
 
 ---@class fzo.Opts
----@field where   fzo.Where|fzo.Item[]|nil        where we should search (default: "*")
----@field what    '"headline"'|'"file"'|nil       what we are searching for (default: "headline")
----@field whence  '"headline"'|'"file"'|false|nil where we should have started from (default: false)
----@field _origin fzo.Link|false|nil              where we started from
+---@field where     fzo.Where|fzo.Item[]|nil        where we should search (default: "*")
+---@field what      '"headline"'|'"file"'|nil       what we are searching for (default: "headline")
+---@field whence    '"headline"'|'"file"'|false|nil where we should have started from (default: false)
 ---
 ---@field color_icons   boolean|nil           colorize entries (default: true)
 ---@field bullet_icons  fzo.BulletIcons|nil   how to display bullets (default: icons)
@@ -20,6 +19,9 @@ local actions = require("fzf-org.actions")
 ---@field prompt    string|nil
 ---@field actions   table<string,table|function>|nil
 ---@field headers   string[]|nil
+---
+---@field _origin       fzo.Link|false|nil  where we started from
+---@field _from_capture boolean|nil         whether _origin is a capture buffer
 
 --- Where to look for Org items
 ---@alias fzo.Where

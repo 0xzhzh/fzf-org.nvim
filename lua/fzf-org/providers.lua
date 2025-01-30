@@ -60,6 +60,10 @@ function M.orgmode(opts)
     end
   end
 
+  if opts._from_capture == nil then
+    opts._from_capture = vim.b.org_capture == true
+  end
+
   opts = fzf.set_header(opts, opts.headers or { "actions" })
 
   local function org_contents(cb)
